@@ -1,6 +1,7 @@
 package net.cerealcamera.inverted_analog_transmission;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import dev.simulated_team.simulated.registrate.SimulatedRegistrate;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
@@ -27,7 +28,12 @@ public class InvertedAnalogTransmission {
 
         InvertedAnalogTransmissionBlocks.register();
         InvertedAnalogTransmissionBlockEntityTypes.register();
-        InvertedAnalogTransmissionCreativeTabs.register(eventBus);
+
+        SimulatedRegistrate.TAB_ITEMS.add(InvertedAnalogTransmissionBlocks.INVERTED_ANALOG_TRANSMISSION::asItem);
+        SimulatedRegistrate.ITEM_TO_SECTION.put(
+                ResourceLocation.fromNamespaceAndPath(MODID, "inverted_analog_transmission"),
+                ResourceLocation.fromNamespaceAndPath("simulated", "simulated")
+        );
     }
 
     public static CreateRegistrate getRegistrate() {

@@ -1,3 +1,5 @@
+This mod is available on [Modrinth](https://modrinth.com/mod/inverted-analog-transmission)
+
 <div align="center">
 <img width="500" height="500" alt="Create: Inverted Analog Transmission Icon" src="src/main/resources/icon.png"/>
 <h1>Create: Inverted Analog Transmission</h1>

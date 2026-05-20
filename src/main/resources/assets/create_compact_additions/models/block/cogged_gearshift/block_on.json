@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create_compact_additions:block/cogged_gearshift/block",
+	"textures": {
+		"0": "block/stripped_spruce_log_top",
+		"1": "create_compact_additions:block/cogged_gearshift/block_on",
+		"particle": "create:block/andesite_casing"
+	}
+}

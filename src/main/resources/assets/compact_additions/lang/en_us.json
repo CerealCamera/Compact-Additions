@@ -1,0 +1,18 @@
+{
+  "block.compact_additions.inverted_analog_transmission": "Inverted Analog Transmission",
+  "compact_additions.ponder.inverted_analog_transmission.header": "Controlling rotational speed using Inverted Analog Transmission",
+  "compact_additions.ponder.inverted_analog_transmission.text_1": "Unpowered Inverted Analog Transmissions behave exactly like fully powered Analog Transmissions, so their shaft and cogwheel rotate independently",
+  "compact_additions.ponder.inverted_analog_transmission.text_2": "0 RPM",
+  "compact_additions.ponder.inverted_analog_transmission.text_3": "The cogwheel's RPM scales with redstone strength towards the shaft's RPM",
+  "compact_additions.ponder.inverted_analog_transmission.text_4": "5 RPM",
+  "compact_additions.ponder.inverted_analog_transmission.text_5": "Higher signal strengths result in smaller speed differences",
+  "compact_additions.ponder.inverted_analog_transmission.text_6": "10 RPM",
+  "compact_additions.ponder.inverted_analog_transmission.text_7": "When the cogwheel drives the transmission, the shaft begins at a higher speed and slows down as the Redstone signal increases",
+  "compact_additions.ponder.inverted_analog_transmission.text_8": "64 RPM",
+  "compact_additions.ponder.inverted_analog_transmission.text_9": "At full signal input, the Transmission behaves exactly like an Encased Cogwheel",
+  "compact_additions.ponder.shared.rpm16": "16 RPM",
+  "compact_additions.inverted_analog_transmission.too_fast": "Too Fast",
+  "compact_additions.inverted_analog_transmission.too_fast_error": "It appears that this _Inverted Analog Transmission_ is attempting to exceed the _maximum rotation speed_. Increase or remove its _Redstone Signal_ to slow it down.",
+  "block.compact_additions.cogged_gearshift": "Cogged Gearshift",
+  "itemGroup.compact_additions.main": "Create: Compact Additions"
+}

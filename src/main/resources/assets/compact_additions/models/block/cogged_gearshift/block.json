@@ -1,0 +1,7 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:block/andesite_encased_cogwheel_top_bottom",
+	"textures": {
+		"side": "compact_additions:block/cogged_gearshift/block_off"
+	}
+}

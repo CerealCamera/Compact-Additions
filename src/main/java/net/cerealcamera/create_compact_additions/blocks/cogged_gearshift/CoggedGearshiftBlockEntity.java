@@ -130,7 +130,7 @@ public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements
     }
 
     /**
-     * The ExtraKinetic BlockEntity for the CreateCompactAdditions. Extends KineticBlockEntity (Can be any other KBE), and implements ExtraKinetics
+     * The ExtraKinetic BlockEntity for the CompactAdditions. Extends KineticBlockEntity (Can be any other KBE), and implements ExtraKinetics
      */
     public static class CoggedGearshiftCogwheel extends KineticBlockEntity implements ExtraKineticsBlockEntity {
 

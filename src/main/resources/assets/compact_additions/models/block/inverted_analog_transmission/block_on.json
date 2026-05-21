@@ -1,0 +1,7 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "compact_additions:block/inverted_analog_transmission/block",
+	"textures": {
+		"1": "compact_additions:block/inverted_analog_transmission/block_on"
+	}
+}

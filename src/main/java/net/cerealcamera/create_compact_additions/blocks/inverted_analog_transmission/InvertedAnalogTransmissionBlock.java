@@ -6,8 +6,8 @@ import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.foundation.block.IBE;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
 import dev.simulated_team.simulated.util.placement_helpers.CogwheelPlacementExtension;
-import net.cerealcamera.create_compact_additions.CCABlockEntityTypes;
-import net.cerealcamera.create_compact_additions.CCABlocks;
+import net.cerealcamera.create_compact_additions.CABlockEntityTypes;
+import net.cerealcamera.create_compact_additions.CABlocks;
 import net.createmod.catnip.placement.IPlacementHelper;
 import net.createmod.catnip.placement.PlacementHelpers;
 import net.minecraft.core.BlockPos;
@@ -33,7 +33,7 @@ import net.minecraft.world.phys.BlockHitResult;
  */
 public class InvertedAnalogTransmissionBlock extends RotatedPillarKineticBlock implements IBE<InvertedAnalogTransmissionBlockEntity>, ExtraKinetics.ExtraKineticsBlock {
 
-    public static final int placementHelperId = PlacementHelpers.register(new CogwheelPlacementExtension((i) -> i.getItem() instanceof CogwheelBlockItem, CCABlocks.INVERTED_ANALOG_TRANSMISSION::has));
+    public static final int placementHelperId = PlacementHelpers.register(new CogwheelPlacementExtension((i) -> i.getItem() instanceof CogwheelBlockItem, CABlocks.INVERTED_ANALOG_TRANSMISSION::has));
 
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
@@ -88,6 +88,6 @@ public class InvertedAnalogTransmissionBlock extends RotatedPillarKineticBlock i
 
     @Override
     public BlockEntityType<? extends InvertedAnalogTransmissionBlockEntity> getBlockEntityType() {
-        return CCABlockEntityTypes.INVERTED_ANALOG_TRANSMISSION.get();
+        return CABlockEntityTypes.INVERTED_ANALOG_TRANSMISSION.get();
     }
 }

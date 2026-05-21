@@ -24,7 +24,7 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 import java.util.List;
 
-import static net.cerealcamera.create_compact_additions.CCALang.translate;
+import static net.cerealcamera.create_compact_additions.CALang.translate;
 import static net.minecraft.ChatFormatting.GOLD;
 
 /**

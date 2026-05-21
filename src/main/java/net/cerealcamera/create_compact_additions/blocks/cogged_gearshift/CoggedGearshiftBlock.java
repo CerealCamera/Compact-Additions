@@ -9,8 +9,8 @@ import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
 import dev.simulated_team.simulated.util.placement_helpers.CogwheelPlacementExtension;
-import net.cerealcamera.create_compact_additions.CCABlockEntityTypes;
-import net.cerealcamera.create_compact_additions.CCABlocks;
+import net.cerealcamera.create_compact_additions.CABlockEntityTypes;
+import net.cerealcamera.create_compact_additions.CABlocks;
 import net.createmod.catnip.placement.IPlacementHelper;
 import net.createmod.catnip.placement.PlacementHelpers;
 import net.minecraft.core.BlockPos;
@@ -37,7 +37,7 @@ import net.minecraft.world.phys.BlockHitResult;
  */
 public class CoggedGearshiftBlock extends AbstractEncasedShaftBlock implements IBE<SplitShaftBlockEntity>, ExtraKinetics.ExtraKineticsBlock {
 
-    public static final int placementHelperId = PlacementHelpers.register(new CogwheelPlacementExtension((i) -> i.getItem() instanceof CogwheelBlockItem, CCABlocks.COGGED_GEARSHIFT::has));
+    public static final int placementHelperId = PlacementHelpers.register(new CogwheelPlacementExtension((i) -> i.getItem() instanceof CogwheelBlockItem, CABlocks.COGGED_GEARSHIFT::has));
 
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
@@ -84,7 +84,7 @@ public class CoggedGearshiftBlock extends AbstractEncasedShaftBlock implements I
 
     @Override
     public BlockEntityType<? extends SplitShaftBlockEntity> getBlockEntityType() {
-        return CCABlockEntityTypes.COGGED_GEARSHIFT.get();
+        return CABlockEntityTypes.COGGED_GEARSHIFT.get();
     }
 
     @Override

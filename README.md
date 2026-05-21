@@ -1,3 +1,5 @@
+## IMPORTANT NOTICE: The namespace has been changed in 2.0.0, so all blocks (and items) from previous versions will disappear if not converted from inverted to their normal variant!
+
 This mod is available on [Modrinth][1]
 
 <div align="center">

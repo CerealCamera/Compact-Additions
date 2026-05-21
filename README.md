@@ -1,4 +1,4 @@
-This mod is available on [Modrinth](https://modrinth.com/mod/inverted-analog-transmission)
+This mod is available on [Modrinth](https://modrinth.com/mod/compact-additions)
 
 <div align="center">
 <img width="500" height="500" alt="Create: Compact Additions Icon" src="https://github.com/CerealCamera/Inverted-Analog-Transmission/raw/1.21.1/src/main/resources/icon.png"/>

@@ -1,4 +1,4 @@
-This mod is available on [Modrinth](https://modrinth.com/mod/compact-additions)
+This mod is available on [Modrinth][1]
 
 <div align="center">
 <img width="500" height="500" alt="Create: Compact Additions Icon" src="https://github.com/CerealCamera/Inverted-Analog-Transmission/raw/1.21.1/src/main/resources/icon.png"/>
@@ -7,7 +7,7 @@ This mod is available on [Modrinth](https://modrinth.com/mod/compact-additions)
 
 ### Overview
 
-Create: Compact Additions adds a few compact kinetics to [Create](https://github.com/Creators-of-Create/Create) and [Create: Simulated](https://github.com/Creators-of-Aeronautics/Simulated-Project), such as the Inverted Analog Transmission and the Cogged Gearshift. They add neat ways to make compact machines and vehicles.
+Create: Compact Additions adds a few compact kinetics to [Create][2] and [Create: Simulated][3], such as the Inverted Analog Transmission and the Cogged Gearshift. They add neat ways to make compact machines and vehicles.
 
 ### Features
 
@@ -21,5 +21,9 @@ The cogged gearshift is an encased cogwheel and gearshift combined, but the cogw
 
 ### Credits
 
-* Textures and models derived from [Create](https://github.com/Creators-of-Create/Create) and [Create: Simulated](https://github.com/Creators-of-Aeronautics/Simulated-Project)
-* Most of the code is derived from [Create: Simulated](https://github.com/Creators-of-Aeronautics/Simulated-Project) and other Create addons
+* Textures and models derived from [Create][2] and [Create: Simulated][3]
+* Most of the code is derived from [Create: Simulated][3] and other Create addons
+
+[1]: https://modrinth.com/mod/compact-additions
+[2]: https://github.com/Creators-of-Create/Create
+[3]: https://github.com/Creators-of-Aeronautics/Simulated-Project

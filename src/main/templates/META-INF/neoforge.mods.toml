@@ -46,7 +46,7 @@ authors="CerealCamera"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Adds an inverted analog transmission to Create: Simulated!
+A Create Simulated/Aeronautics addon that adds compact kinetics for making compact machines and vehicles!
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.

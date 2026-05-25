@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions;
+package net.cerealcamera.compact_additions;
 
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
 import net.createmod.catnip.registry.RegisteredObjectsHelper;

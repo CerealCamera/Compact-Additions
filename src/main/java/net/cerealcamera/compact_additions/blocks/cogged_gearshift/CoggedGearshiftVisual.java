@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions.blocks.cogged_gearshift;
+package net.cerealcamera.compact_additions.blocks.cogged_gearshift;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.IRotate;

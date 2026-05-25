@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions.blocks.cogged_gearshift;
+package net.cerealcamera.compact_additions.blocks.inverted_cogged_gearshift;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -18,14 +18,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CoggedGearshiftRenderer extends KineticBlockEntityRenderer<CoggedGearshiftBlockEntity> {
+public class InvertedCoggedGearshiftRenderer extends KineticBlockEntityRenderer<InvertedCoggedGearshiftBlockEntity> {
 
-    public CoggedGearshiftRenderer(final BlockEntityRendererProvider.Context context) {
+    public InvertedCoggedGearshiftRenderer(final BlockEntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    protected void renderSafe(final CoggedGearshiftBlockEntity be, final float partialTicks, final PoseStack ms, final MultiBufferSource buffer, final int light, final int overlay) {
+    protected void renderSafe(final InvertedCoggedGearshiftBlockEntity be, final float partialTicks, final PoseStack ms, final MultiBufferSource buffer, final int light, final int overlay) {
         if (VisualizationManager.supportsVisualization(be.getLevel())) {
             return;
         }
@@ -36,7 +36,7 @@ public class CoggedGearshiftRenderer extends KineticBlockEntityRenderer<CoggedGe
         final Direction.Axis axis = ((IRotate) state.getBlock()).getRotationAxis(state);
 
         final SuperByteBuffer cogwheel = kineticRotationTransform(
-                CachedBuffers.partialFacingVertical(AllPartialModels.SHAFTLESS_COGWHEEL, state, Direction.fromAxisAndDirection(state.getValue(CoggedGearshiftBlock.AXIS), Direction.AxisDirection.POSITIVE)),
+                CachedBuffers.partialFacingVertical(AllPartialModels.SHAFTLESS_COGWHEEL, state, Direction.fromAxisAndDirection(state.getValue(InvertedCoggedGearshiftBlock.AXIS), Direction.AxisDirection.POSITIVE)),
                 be.getExtraKinetics(),
                 axis,
                 getAngleForBe(be.getExtraKinetics(), be.getBlockPos(), axis),
@@ -73,7 +73,7 @@ public class CoggedGearshiftRenderer extends KineticBlockEntityRenderer<CoggedGe
     }
 
     @Override
-    protected BlockState getRenderedBlockState(final CoggedGearshiftBlockEntity be) {
+    protected BlockState getRenderedBlockState(final InvertedCoggedGearshiftBlockEntity be) {
         return shaft(getRotationAxisOf(be));
     }
 }

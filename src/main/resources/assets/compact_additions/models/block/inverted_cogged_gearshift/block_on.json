@@ -1,0 +1,7 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "compact_additions:block/inverted_cogged_gearshift/block",
+	"textures": {
+		"side": "compact_additions:block/inverted_cogged_gearshift/block_on"
+	}
+}

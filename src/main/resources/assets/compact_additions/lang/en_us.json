@@ -1,5 +1,7 @@
 {
   "block.compact_additions.inverted_analog_transmission": "Inverted Analog Transmission",
+  "block.compact_additions.cogged_gearshift": "Cogged Gearshift",
+  "block.compact_additions.inverted_cogged_gearshift": "Inverted Cogged Gearshift",
   "compact_additions.ponder.inverted_analog_transmission.header": "Controlling rotational speed using Inverted Analog Transmission",
   "compact_additions.ponder.inverted_analog_transmission.text_1": "Unpowered Inverted Analog Transmissions behave exactly like fully powered Analog Transmissions, so their shaft and cogwheel rotate independently",
   "compact_additions.ponder.inverted_analog_transmission.text_2": "0 RPM",
@@ -13,6 +15,5 @@
   "compact_additions.ponder.shared.rpm16": "16 RPM",
   "compact_additions.inverted_analog_transmission.too_fast": "Too Fast",
   "compact_additions.inverted_analog_transmission.too_fast_error": "It appears that this _Inverted Analog Transmission_ is attempting to exceed the _maximum rotation speed_. Increase or remove its _Redstone Signal_ to slow it down.",
-  "block.compact_additions.cogged_gearshift": "Cogged Gearshift",
   "itemGroup.compact_additions.main": "Create: Compact Additions"
 }

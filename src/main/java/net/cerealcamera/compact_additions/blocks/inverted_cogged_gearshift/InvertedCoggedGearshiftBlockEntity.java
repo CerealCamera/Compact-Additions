@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions.blocks.cogged_gearshift;
+package net.cerealcamera.compact_additions.blocks.inverted_cogged_gearshift;
 
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
@@ -21,26 +21,28 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The parent BlockEntity class. implements {@link ExtraKinetics ExtraKinetics} to allow multi-kinetic functionality
  */
-public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements ExtraKinetics {
+public class InvertedCoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements ExtraKinetics {
 
     /**
-     * The ExtraKinetic BlockEntity associated with the AnalogTransmission
+     * The ExtraKinetic BlockEntity associated with the InvertedCoggedGearshift
      */
-    private final CoggedGearshiftCogwheel extraWheel;
+    private final InvertedCoggedGearshiftCogwheel extraWheel;
 
     private int signal = 0;
 
-    public CoggedGearshiftBlockEntity(final BlockEntityType<?> typeIn, final BlockPos pos, final BlockState state) {
+    public InvertedCoggedGearshiftBlockEntity(final BlockEntityType<?> typeIn, final BlockPos pos, final BlockState state) {
         super(typeIn, pos, state);
 
         //set our ExtraKientic BlockEntity and set the proper BlockState
-        this.extraWheel = new CoggedGearshiftCogwheel(typeIn, new ExtraBlockPos(pos), state, this);
+        this.extraWheel = new InvertedCoggedGearshiftCogwheel(typeIn, new ExtraBlockPos(pos), state, this);
     }
 
     @Override
     public float getRotationSpeedModifier(Direction face) {
-        if (hasSource()) {
-            if (face != getSourceFacing() && getBlockState().getValue(BlockStateProperties.POWERED))
+        if (hasSource() && face != getSourceFacing()) {
+            if (getBlockState().getValue(BlockStateProperties.POWERED))
+                return 1;
+            else
                 return -1;
         }
         return 1;
@@ -64,7 +66,7 @@ public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements
                 this.extraWheel.removeSource();
 
                 this.signal = bestNeighborSignal;
-                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(CoggedGearshiftBlock.POWERED, this.signal > 0));
+                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(InvertedCoggedGearshiftBlock.POWERED, this.signal > 0));
 
                 //Depending on if we are connected to the ExtraKinetic BlockEntity, or vice versa, we need to attach kinetics accordingly
                 if (((KineticBlockEntityExtension) this).simulated$getConnectedToExtraKinetics()) {//Attach ours, then ExtraKientic's
@@ -82,18 +84,15 @@ public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements
     }
 
     /**
-     * This propagateRotationTo handles both the AnalogTransmission's modifier towards the ExtraKientic BlockEntity, and vise versa
+     * This propagateRotationTo handles both the InvertedCoggedGearshift's modifier towards the ExtraKientic BlockEntity, and vise versa
      */
     @Override
     public float propagateRotationTo(final KineticBlockEntity target, final BlockState stateFrom, final BlockState stateTo, final BlockPos diff, final boolean connectedViaAxes, final boolean connectedViaCogs) {
-        float gatheredRotationModifier = 0;
-        if (target == this.extraWheel) { //reduce speed
-            gatheredRotationModifier = 1;
-        } else if (target == this) { //increase speed
-            gatheredRotationModifier = 1;
-        }
-
-        return gatheredRotationModifier;
+        if (target == this.extraWheel)
+            return 1;
+        else if (target == this)
+            return 1;
+        return 0;
     }
 
     @Override
@@ -130,9 +129,9 @@ public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements
     }
 
     /**
-     * The ExtraKinetic BlockEntity for the CompactAdditions. Extends KineticBlockEntity (Can be any other KBE), and implements ExtraKinetics
+     * The ExtraKinetic BlockEntity for the InvertedCoggedGearshift. Extends KineticBlockEntity (Can be any other KBE), and implements ExtraKinetics
      */
-    public static class CoggedGearshiftCogwheel extends KineticBlockEntity implements ExtraKineticsBlockEntity {
+    public static class InvertedCoggedGearshiftCogwheel extends KineticBlockEntity implements ExtraKineticsBlockEntity {
 
         public static final ICogWheel EXTRA_COGWHEEL_CONFIG = new ICogWheel() {
             @Override
@@ -142,7 +141,7 @@ public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements
 
             @Override
             public Direction.Axis getRotationAxis(final BlockState state) {
-                return state.getValue(CoggedGearshiftBlock.AXIS);
+                return state.getValue(InvertedCoggedGearshiftBlock.AXIS);
             }
         };
 
@@ -154,7 +153,7 @@ public class CoggedGearshiftBlockEntity extends SplitShaftBlockEntity implements
         /**
          * @param pos An ExtraBlockPos associated with this ExtraKinetic BlockEntity. This is needed to inform the {@link com.simibubi.create.content.kinetics.RotationPropagator} that this BlockEntity is an ExtraKinetic one.
          */
-        public CoggedGearshiftCogwheel(final BlockEntityType<?> typeIn, final ExtraBlockPos pos, final BlockState state, final KineticBlockEntity parentBlockEntity) {
+        public InvertedCoggedGearshiftCogwheel(final BlockEntityType<?> typeIn, final ExtraBlockPos pos, final BlockState state, final KineticBlockEntity parentBlockEntity) {
             super(typeIn, pos, state);
             this.parentBlockEntity = parentBlockEntity;
         }

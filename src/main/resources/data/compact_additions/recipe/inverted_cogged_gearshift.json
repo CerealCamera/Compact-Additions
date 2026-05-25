@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "compact_additions:cogged_gearshift"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "compact_additions:inverted_cogged_gearshift"
+  }
+}

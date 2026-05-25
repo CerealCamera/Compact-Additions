@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions.blocks.inverted_analog_transmission;
+package net.cerealcamera.compact_additions.blocks.inverted_analog_transmission;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.RotatingInstance;

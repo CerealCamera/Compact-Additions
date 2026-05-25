@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions.blocks.cogged_gearshift;
+package net.cerealcamera.compact_additions.blocks.inverted_cogged_gearshift;
 
 import com.simibubi.create.content.kinetics.RotationPropagator;
 import com.simibubi.create.content.kinetics.base.AbstractEncasedShaftBlock;
@@ -9,8 +9,8 @@ import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
 import dev.simulated_team.simulated.util.placement_helpers.CogwheelPlacementExtension;
-import net.cerealcamera.create_compact_additions.CABlockEntityTypes;
-import net.cerealcamera.create_compact_additions.CABlocks;
+import net.cerealcamera.compact_additions.CABlockEntityTypes;
+import net.cerealcamera.compact_additions.CABlocks;
 import net.createmod.catnip.placement.IPlacementHelper;
 import net.createmod.catnip.placement.PlacementHelpers;
 import net.minecraft.core.BlockPos;
@@ -33,15 +33,15 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 /**
- * The parent Block. Implements {@link ExtraKinetics.ExtraKineticsBlock ExtraKienticsBlock} to ensure {@link com.simibubi.create.content.kinetics.RotationPropagator} sees the ExtraKinetic BlockEntity
+ * The parent Block. Implements {@link ExtraKinetics.ExtraKineticsBlock ExtraKienticsBlock} to ensure {@link RotationPropagator} sees the ExtraKinetic BlockEntity
  */
-public class CoggedGearshiftBlock extends AbstractEncasedShaftBlock implements IBE<SplitShaftBlockEntity>, ExtraKinetics.ExtraKineticsBlock {
+public class InvertedCoggedGearshiftBlock extends AbstractEncasedShaftBlock implements IBE<SplitShaftBlockEntity>, ExtraKinetics.ExtraKineticsBlock {
 
-    public static final int placementHelperId = PlacementHelpers.register(new CogwheelPlacementExtension((i) -> i.getItem() instanceof CogwheelBlockItem, CABlocks.COGGED_GEARSHIFT::has));
+    public static final int placementHelperId = PlacementHelpers.register(new CogwheelPlacementExtension((i) -> i.getItem() instanceof CogwheelBlockItem, CABlocks.INVERTED_COGGED_GEARSHIFT::has));
 
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
-    public CoggedGearshiftBlock(final Properties properties) {
+    public InvertedCoggedGearshiftBlock(final Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState().setValue(POWERED, false));
     }
@@ -74,7 +74,7 @@ public class CoggedGearshiftBlock extends AbstractEncasedShaftBlock implements I
 
     @Override
     public IRotate getExtraKineticsRotationConfiguration() {
-        return CoggedGearshiftBlockEntity.CoggedGearshiftCogwheel.EXTRA_COGWHEEL_CONFIG;
+        return InvertedCoggedGearshiftBlockEntity.InvertedCoggedGearshiftCogwheel.EXTRA_COGWHEEL_CONFIG;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class CoggedGearshiftBlock extends AbstractEncasedShaftBlock implements I
 
     @Override
     public BlockEntityType<? extends SplitShaftBlockEntity> getBlockEntityType() {
-        return CABlockEntityTypes.COGGED_GEARSHIFT.get();
+        return CABlockEntityTypes.INVERTED_COGGED_GEARSHIFT.get();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions;
+package net.cerealcamera.compact_additions;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.resources.ResourceKey;

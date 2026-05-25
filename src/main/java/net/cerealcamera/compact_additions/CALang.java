@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions;
+package net.cerealcamera.compact_additions;
 
 import net.createmod.catnip.lang.Lang;
 import net.createmod.catnip.lang.LangBuilder;

@@ -1,10 +1,10 @@
-package net.cerealcamera.create_compact_additions.ponder;
+package net.cerealcamera.compact_additions.ponder;
 
 import com.simibubi.create.content.redstone.analogLever.AnalogLeverBlockEntity;
 import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import dev.simulated_team.simulated.ponder.SmoothMovementUtils;
 import dev.simulated_team.simulated.ponder.instructions.CustomAnimateWorldSectionInstruction;
-import net.cerealcamera.create_compact_additions.blocks.inverted_analog_transmission.InvertedAnalogTransmissionBlockEntity;
+import net.cerealcamera.compact_additions.blocks.inverted_analog_transmission.InvertedAnalogTransmissionBlockEntity;
 import net.createmod.ponder.api.PonderPalette;
 import net.createmod.ponder.api.element.ElementLink;
 import net.createmod.ponder.api.element.WorldSectionElement;

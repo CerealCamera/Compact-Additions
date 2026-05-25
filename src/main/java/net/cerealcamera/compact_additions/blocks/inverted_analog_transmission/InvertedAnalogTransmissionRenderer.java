@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions.blocks.inverted_analog_transmission;
+package net.cerealcamera.compact_additions.blocks.inverted_analog_transmission;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

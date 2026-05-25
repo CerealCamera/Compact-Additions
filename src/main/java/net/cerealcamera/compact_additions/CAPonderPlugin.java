@@ -1,4 +1,4 @@
-package net.cerealcamera.create_compact_additions;
+package net.cerealcamera.compact_additions;
 
 import com.simibubi.create.foundation.ponder.CreatePonderPlugin;
 import net.createmod.ponder.api.level.PonderLevel;

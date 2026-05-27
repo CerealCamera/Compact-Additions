@@ -1,4 +1,4 @@
-package net.cerealcamera.compact_additions.blocks.cogged_gearshift;
+package net.cerealcamera.compact_additions.blocks.cogged_split_shaft;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.IRotate;
@@ -17,13 +17,13 @@ import net.minecraft.world.level.block.Block;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class CoggedGearshiftVisual extends KineticBlockEntityVisual<CoggedGearshiftBlockEntity> {
+public class CoggedSplitShaftVisual extends KineticBlockEntityVisual<CoggedSplitShaftBlockEntity> {
 
     private final RotatingInstance cogInstance;
 
     protected final ArrayList<RotatingInstance> keys;
 
-    public CoggedGearshiftVisual(VisualizationContext context, CoggedGearshiftBlockEntity blockEntity, float partialTick) {
+    public CoggedSplitShaftVisual(VisualizationContext context, CoggedSplitShaftBlockEntity blockEntity, float partialTick) {
         super(context, blockEntity, partialTick);
         this.cogInstance = this.instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(AllPartialModels.SHAFTLESS_COGWHEEL)).createInstance()
                 .rotateToFace(Direction.UP, this.rotationAxis())

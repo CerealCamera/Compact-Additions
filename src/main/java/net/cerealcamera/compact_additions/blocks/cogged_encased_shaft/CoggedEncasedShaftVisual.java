@@ -1,4 +1,4 @@
-package net.cerealcamera.compact_additions.blocks.inverted_analog_transmission;
+package net.cerealcamera.compact_additions.blocks.cogged_encased_shaft;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.RotatingInstance;
@@ -7,18 +7,19 @@ import com.simibubi.create.foundation.render.AllInstanceTypes;
 import dev.engine_room.flywheel.api.instance.Instance;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
-import dev.simulated_team.simulated.index.SimPartialModels;
 import net.minecraft.core.Direction;
 
 import java.util.function.Consumer;
 
-public class InvertedAnalogTransmissionVisual extends SingleAxisRotatingVisual<InvertedAnalogTransmissionBlockEntity> {
+import static net.cerealcamera.compact_additions.blocks.cogged_encased_shaft.CoggedEncasedShaftBlockEntity.wheelPartialModel;
+
+public class CoggedEncasedShaftVisual extends SingleAxisRotatingVisual<CoggedEncasedShaftBlockEntity> {
 
     private final RotatingInstance cogInstance;
 
-    public InvertedAnalogTransmissionVisual(final VisualizationContext context, final InvertedAnalogTransmissionBlockEntity blockEntity, final float partialTick) {
+    public CoggedEncasedShaftVisual(final VisualizationContext context, final CoggedEncasedShaftBlockEntity blockEntity, final float partialTick) {
         super(context, blockEntity, partialTick, Direction.UP, Models.partial(AllPartialModels.SHAFT));
-        this.cogInstance = this.instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(SimPartialModels.ANALOG_TRANSMISSION_COG)).createInstance()
+        this.cogInstance = this.instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(wheelPartialModel())).createInstance()
                 .rotateToFace(Direction.UP, this.rotationAxis())
                 .setup(blockEntity.getExtraKinetics())
                 .setPosition(this.getVisualPosition());

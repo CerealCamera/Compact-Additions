@@ -1,11 +1,10 @@
-package net.cerealcamera.compact_additions.blocks.inverted_analog_transmission;
+package net.cerealcamera.compact_additions.blocks.cogged_encased_shaft;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
-import dev.simulated_team.simulated.index.SimPartialModels;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,14 +13,16 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class InvertedAnalogTransmissionRenderer extends KineticBlockEntityRenderer<InvertedAnalogTransmissionBlockEntity> {
+import static net.cerealcamera.compact_additions.blocks.cogged_encased_shaft.CoggedEncasedShaftBlockEntity.wheelPartialModel;
 
-    public InvertedAnalogTransmissionRenderer(final BlockEntityRendererProvider.Context context) {
+public class CoggedEncasedShaftRenderer extends KineticBlockEntityRenderer<CoggedEncasedShaftBlockEntity> {
+
+    public CoggedEncasedShaftRenderer(final BlockEntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    protected void renderSafe(final InvertedAnalogTransmissionBlockEntity be, final float partialTicks, final PoseStack ms, final MultiBufferSource buffer, final int light, final int overlay) {
+    protected void renderSafe(final CoggedEncasedShaftBlockEntity be, final float partialTicks, final PoseStack ms, final MultiBufferSource buffer, final int light, final int overlay) {
         if (VisualizationManager.supportsVisualization(be.getLevel())) {
             return;
         }
@@ -32,7 +33,7 @@ public class InvertedAnalogTransmissionRenderer extends KineticBlockEntityRender
         final Direction.Axis axis = ((IRotate) state.getBlock()).getRotationAxis(state);
 
         final SuperByteBuffer cogwheel = kineticRotationTransform(
-                CachedBuffers.partialFacingVertical(SimPartialModels.ANALOG_TRANSMISSION_COG, state, Direction.fromAxisAndDirection(state.getValue(InvertedAnalogTransmissionBlock.AXIS), Direction.AxisDirection.POSITIVE)),
+                CachedBuffers.partialFacingVertical(wheelPartialModel(), state, Direction.fromAxisAndDirection(state.getValue(CoggedEncasedShaftBlock.AXIS), Direction.AxisDirection.POSITIVE)),
                 be.getExtraKinetics(),
                 axis,
                 getAngleForBe(be.getExtraKinetics(), be.getBlockPos(), axis),
@@ -45,7 +46,7 @@ public class InvertedAnalogTransmissionRenderer extends KineticBlockEntityRender
     }
 
     @Override
-    protected BlockState getRenderedBlockState(final InvertedAnalogTransmissionBlockEntity be) {
+    protected BlockState getRenderedBlockState(final CoggedEncasedShaftBlockEntity be) {
         return shaft(getRotationAxisOf(be));
     }
 }

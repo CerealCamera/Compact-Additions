@@ -1,4 +1,4 @@
-This mod is available on [Modrinth][1]
+This mod is available on [Modrinth][1] and [Curseforge][4]
 
 <div align="center">
 <img width="500" height="500" alt="Create: Compact Additions Icon" src="https://github.com/CerealCamera/Inverted-Analog-Transmission/raw/1.21.1/src/main/resources/icon.png"/>
@@ -27,3 +27,4 @@ The cogged gearshift is an encased cogwheel and gearshift combined, but the cogw
 [1]: https://modrinth.com/mod/compact-additions
 [2]: https://github.com/Creators-of-Create/Create
 [3]: https://github.com/Creators-of-Aeronautics/Simulated-Project
+[4]: https://www.curseforge.com/minecraft/mc-mods/create-compact-additions

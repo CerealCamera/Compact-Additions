@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "simulated:analog_transmission"
+    },
+    {
+      "item": "create:rotation_speed_controller"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "compact_additions:analog_speed_controller"
+  }
+}

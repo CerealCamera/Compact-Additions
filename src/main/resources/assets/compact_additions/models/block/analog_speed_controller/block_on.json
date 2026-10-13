@@ -1,0 +1,8 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "compact_additions:block/analog_speed_controller/block",
+	"textures": {
+		"0": "compact_additions:block/analog_speed_controller/block_on",
+		"particle": "compact_additions:block/analog_speed_controller/block_on"
+	}
+}

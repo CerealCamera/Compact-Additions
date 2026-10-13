@@ -1,0 +1,8 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:block/gearshift/item",
+	"textures": {
+		"0": "compact_additions:block/analog_speed_controller/block_off",
+		"1": "create:block/brass_gearbox"
+	}
+}

@@ -1,6 +1,7 @@
 {
   "values": [
     "compact_additions:inverted_analog_transmission",
+    "compact_additions:analog_speed_controller",
     "compact_additions:cogged_gearshift",
     "compact_additions:inverted_cogged_gearshift"
   ]

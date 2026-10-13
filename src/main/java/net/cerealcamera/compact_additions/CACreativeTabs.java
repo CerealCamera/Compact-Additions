@@ -19,7 +19,8 @@ public class CACreativeTabs {
     public static final List<ItemProviderEntry<?, ?>> ITEMS = List.of(
             CABlocks.INVERTED_ANALOG_TRANSMISSION,
             CABlocks.COGGED_GEARSHIFT,
-            CABlocks.INVERTED_COGGED_GEARSHIFT
+            CABlocks.INVERTED_COGGED_GEARSHIFT,
+            CABlocks.ANALOG_SPEED_CONTROLLER
     );
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN = REGISTER.register("main",

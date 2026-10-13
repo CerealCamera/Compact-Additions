@@ -1,0 +1,10 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:block/gearshift/block",
+	"textures": {
+		"0": "compact_additions:block/analog_speed_controller/block_off",
+		"1": "create:block/brass_gearbox",
+		"2": "create:block/funnel/brass_funnel_frame",
+		"particle": "compact_additions:block/analog_speed_controller/block_off"
+	}
+}

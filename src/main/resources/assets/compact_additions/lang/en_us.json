@@ -1,5 +1,6 @@
 {
   "block.compact_additions.inverted_analog_transmission": "Inverted Analog Transmission",
+  "block.compact_additions.analog_speed_controller": "Analog Speed Controller",
   "block.compact_additions.cogged_gearshift": "Cogged Gearshift",
   "block.compact_additions.inverted_cogged_gearshift": "Inverted Cogged Gearshift",
   "compact_additions.ponder.inverted_analog_transmission.header": "Controlling rotational speed using Inverted Analog Transmission",

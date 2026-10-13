@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create:brass_casing"
+    },
+    {
+      "item": "create:shaft"
+    },
+    {
+      "item": "create:cogwheel"
+    },
+    {
+      "item": "create:rotation_speed_controller"
+    },
+    {
+      "item": "create:electron_tube"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "compact_additions:analog_speed_controller"
+  }
+}

@@ -32,10 +32,10 @@ public class AnalogSpeedControllerBlock extends ClutchBlock {
     public void neighborChanged(BlockState state, Level level, BlockPos blockPos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (level.isClientSide) return;
 
-        int power = level.getBestNeighborSignal(blockPos);
-        int prevPower = state.getValue(POWER);
-        if (power != prevPower) {
-            level.setBlock(blockPos, state.setValue(POWERED, power > 0).setValue(POWER, power), 2 | 16);
+        int signal = level.getBestNeighborSignal(blockPos);
+        int prevSignal = state.getValue(POWER);
+        if (signal != prevSignal) {
+            level.setBlock(blockPos, state.setValue(POWERED, signal > 0).setValue(POWER, signal), 2 | 16);
             detachKinetics(level, blockPos, true);
         }
     }

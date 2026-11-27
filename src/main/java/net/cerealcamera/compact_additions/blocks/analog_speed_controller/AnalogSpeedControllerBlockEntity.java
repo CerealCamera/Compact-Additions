@@ -56,7 +56,7 @@ public class AnalogSpeedControllerBlockEntity extends ClutchBlockEntity {
 
     @Override
     public float getRotationSpeedModifier(Direction face) {
-        return hasSource() && face != getSourceFacing() ? targetSpeed.value / getSpeed() * level.getBestNeighborSignal(getBlockPos()) / 15 : 1;
+        return hasSource() ? face != getSourceFacing() ? targetSpeed.value / getSpeed() * getBlockState().getValue(AnalogSpeedControllerBlock.POWER) / 15 : 1 : 1;
     }
 
     private static class ControllerValueBoxTransform extends ValueBoxTransform.Sided {

@@ -1,30 +1,33 @@
-This mod is available on [Modrinth][1] and [Curseforge][4]
+This mod is available on [Modrinth][3] and [Curseforge][4]
 
 <div align="center">
-<img width="500" height="500" alt="Create: Compact Additions Icon" src="https://github.com/CerealCamera/Inverted-Analog-Transmission/raw/1.21.1/src/main/resources/icon.png"/>
+<img width="512" height="512" alt="Create: Compact Additions Icon" src="https://github.com/CerealCamera/Inverted-Analog-Transmission/raw/1.21.1/src/main/resources/icon.png"/>
 <h1>Create: Compact Additions</h1>
 </div>
 
 ### Overview
 
-Create: Compact Additions adds a few compact kinetics to [Create][2] and [Create: Simulated][3], such as the Inverted Analog Transmission and the Cogged Gearshift. They add neat ways to make compact machines and vehicles.
+Create: Compact Additions adds a few compact kinetics to [Create][1] and [Create: Simulated][2], such as the Inverted Analog Transmission and the Cogged Gearshift. They add neat ways to make compact machines and vehicles.
 
 ### Features
 
-* Inverted Analog Transmission: A compact and neat way to control RPM with a redstone signal.
-* Cogged Gearshift: A gearshift with a cogwheel for transferring rotational power sideways and input from the side.
+* **Analog Speed Controller**: A compact and configurable way control RPM with an analog redstone signal
+* **Inverted Analog Transmission**: A compact way to control RPM with an analog redstone signal.
+* **Cogged Gearshift**: A gearshift with a cogwheel for transferring rotational power sideways and input from the side.
+* **Inverted Cogged Gearshift**: The same as the Cogged Gearshift but with the output of the gearshift inverted.
 
 ### Technical
 
-The inverted analog transmission behaves just like the standard analog transmission, but with its signal flipped. So a signal strength of 10 on the standard analog transmission will output the same RPM as a signal strength of 5 on an inverted analog transmission.
-The cogged gearshift is an encased cogwheel and gearshift combined, but the cogwheel isn't affected by the gearshift. When the rotational power is inputted from the cogwheel and redstone signal is given, both of the sides reverse their rotation.
+The Analog Speed Controller calculates the output speed based on the given redstone signal and the set max speed.
+
+The Inverted Analog Transmission behaves just like the standard Analog Transmission, but with its signal flipped.
 
 ### Credits
 
-* Textures and models derived from [Create][2] and [Create: Simulated][3]
-* Most of the code is derived from [Create: Simulated][3] and other Create addons
+* Textures and models derived from [Create][1] and [Create: Simulated][2]
+* Most of the code is derived from [Create: Simulated][2] and other Create addons
 
-[1]: https://modrinth.com/mod/compact-additions
-[2]: https://github.com/Creators-of-Create/Create
-[3]: https://github.com/Creators-of-Aeronautics/Simulated-Project
-[4]: https://www.curseforge.com/minecraft/mc-mods/create-compact-additions
+[1]: https://github.com/Creators-of-Create/Create
+[2]: https://github.com/Creators-of-Aeronautics/Simulated-Project
+[3]: https://modrinth.com/mod/compact-additions
+[4]: https://www.curseforge.com/minecraft/mc-mods/compact-additions

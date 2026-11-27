@@ -1,56 +1,49 @@
 package net.cerealcamera.compact_additions.blocks.analog_speed_controller;
 
-import com.simibubi.create.content.kinetics.RotationPropagator;
-import com.simibubi.create.content.kinetics.base.AbstractEncasedShaftBlock;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.content.kinetics.transmission.ClutchBlock;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
-import com.simibubi.create.foundation.block.IBE;
 import net.cerealcamera.compact_additions.CABlockEntityTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+public class AnalogSpeedControllerBlock extends ClutchBlock {
 
-@ParametersAreNonnullByDefault
-public class AnalogSpeedControllerBlock extends AbstractEncasedShaftBlock implements IBE<SplitShaftBlockEntity> {
-
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final IntegerProperty POWER = BlockStateProperties.POWER;
 
     public AnalogSpeedControllerBlock(Properties properties) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(POWERED, false));
+        registerDefaultState(defaultBlockState().setValue(POWERED, false).setValue(POWER, 0));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POWERED);
+        builder.add(POWER);
         super.createBlockStateDefinition(builder);
     }
 
     @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos blockPos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+        if (level.isClientSide) return;
+
+        int power = level.getBestNeighborSignal(blockPos);
+        int prevPower = state.getValue(POWER);
+        if (power != prevPower) {
+            level.setBlock(blockPos, state.setValue(POWERED, power > 0).setValue(POWER, power), 2 | 16);
+            detachKinetics(level, blockPos, true);
+        }
+    }
+
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(POWERED,
-                context.getLevel().hasNeighborSignal(context.getClickedPos()));
-    }
-
-    @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        var be = level.getBlockEntity(pos);
-        if (!(be instanceof KineticBlockEntity kte)) return;
-        RotationPropagator.handleAdded(level, pos, kte);
-    }
-
-    @Override
-    public Class<SplitShaftBlockEntity> getBlockEntityClass() {
-        return SplitShaftBlockEntity.class;
+        return super.getStateForPlacement(context)
+                .setValue(POWER, context.getLevel().getBestNeighborSignal(context.getClickedPos()));
     }
 
     @Override

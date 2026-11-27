@@ -4,8 +4,10 @@ import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
+import dev.simulated_team.simulated.mixin_interface.extra_kinetics.KineticBlockEntityExtension;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraBlockPos;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
+import net.cerealcamera.compact_additions.blocks.cogged_encased_shaft.CoggedEncasedShaftBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -35,11 +37,6 @@ public abstract class CoggedSplitShaftBlockEntity extends SplitShaftBlockEntity 
         this.extraWheel = new CoggedSplitShaftCogwheel(typeIn, new ExtraBlockPos(pos), state, this);
     }
 
-    @Override
-    public float getRotationSpeedModifier(Direction face) {
-        return 1;
-    }
-
     /**
      * Required override, as we need our ExtraKinetic BlockEntity to tick
      */
@@ -49,16 +46,25 @@ public abstract class CoggedSplitShaftBlockEntity extends SplitShaftBlockEntity 
 
         if (!this.getLevel().isClientSide) {
             if (bestNeighborSignal != this.signal) {
-                // Detach our own network and remove the sources
+                // Detach our own network, and our ExtraKinetic's
                 this.detachKinetics();
+                this.extraWheel.detachKinetics();
+
+                // Remove the sources
                 this.removeSource();
                 this.extraWheel.removeSource();
 
                 this.signal = bestNeighborSignal;
-                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(CoggedSplitShaftBlock.POWERED, this.signal > 0));
+                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(CoggedEncasedShaftBlock.POWERED, this.signal > 0));
 
-                // Attach the kinetics back
-                this.attachKinetics();
+                // Depending on if we are connected to the ExtraKinetic BlockEntity, or vice versa, we need to attach kinetics accordingly
+                if (((KineticBlockEntityExtension) this).simulated$getConnectedToExtraKinetics()) {//Attach ours, then ExtraKientic's
+                    this.attachKinetics();
+                    this.extraWheel.attachKinetics();
+                } else { // Attach ExtraKinetic's, then ours
+                    this.extraWheel.attachKinetics();
+                    this.attachKinetics();
+                }
             }
         }
 

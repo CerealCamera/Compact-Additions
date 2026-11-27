@@ -3,7 +3,7 @@ package net.cerealcamera.compact_additions.blocks.analog_speed_controller;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.kinetics.RotationPropagator;
 import com.simibubi.create.content.kinetics.motor.KineticScrollValueBehaviour;
-import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
+import com.simibubi.create.content.kinetics.transmission.ClutchBlockEntity;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueBoxTransform;
@@ -22,33 +22,13 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-public class AnalogSpeedControllerBlockEntity extends SplitShaftBlockEntity {
+public class AnalogSpeedControllerBlockEntity extends ClutchBlockEntity {
     public static final int DEFAULT_SPEED = 16;
 
     public ScrollValueBehaviour targetSpeed;
 
-    private int signal = 0;
-
     public AnalogSpeedControllerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-    }
-
-    @Override
-    public void tick() {
-        final int bestNeighborSignal = this.getLevel().getBestNeighborSignal(this.getBlockPos());
-
-        if (!this.getLevel().isClientSide) {
-            if (bestNeighborSignal != this.signal) {
-                this.detachKinetics();
-                this.removeSource();
-
-                this.signal = bestNeighborSignal;
-                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(AnalogSpeedControllerBlock.POWERED, this.signal > 0));
-
-                this.attachKinetics();
-            }
-        }
-        super.tick();
     }
 
     @Override
@@ -76,7 +56,7 @@ public class AnalogSpeedControllerBlockEntity extends SplitShaftBlockEntity {
 
     @Override
     public float getRotationSpeedModifier(Direction face) {
-        return hasSource() ? face != getSourceFacing() ? targetSpeed.value / getSpeed() * this.getLevel().getBestNeighborSignal(this.getBlockPos()) / 15 : 1 : 1;
+        return hasSource() && face != getSourceFacing() ? targetSpeed.value / getSpeed() * level.getBestNeighborSignal(getBlockPos()) / 15 : 1;
     }
 
     private static class ControllerValueBoxTransform extends ValueBoxTransform.Sided {
@@ -84,10 +64,12 @@ public class AnalogSpeedControllerBlockEntity extends SplitShaftBlockEntity {
         protected Vec3 getSouthLocation() {
             return VecHelper.voxelSpace(8, 8f, 15.5f);
         }
+
         @Override
         protected boolean isSideActive(BlockState state, Direction direction) {
             return state.getValue(AnalogSpeedControllerBlock.AXIS) != direction.getAxis();
         }
+
         @Override
         public void rotate(LevelAccessor level, BlockPos pos, BlockState state, PoseStack ms) {
             var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);

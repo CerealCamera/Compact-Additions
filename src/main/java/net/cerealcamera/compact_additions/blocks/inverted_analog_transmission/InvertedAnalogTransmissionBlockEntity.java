@@ -3,7 +3,6 @@ package net.cerealcamera.compact_additions.blocks.inverted_analog_transmission;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
-import dev.simulated_team.simulated.mixin_interface.extra_kinetics.KineticBlockEntityExtension;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
 import net.cerealcamera.compact_additions.blocks.cogged_encased_shaft.CoggedEncasedShaftBlockEntity;
 import net.createmod.catnip.lang.FontHelper;
@@ -39,7 +38,7 @@ public class InvertedAnalogTransmissionBlockEntity extends CoggedEncasedShaftBlo
     }
 
     /**
-     * Required override, as we need our ExtraKinetic BlockEntity to tick
+     * Required override, as we need to send overstressed effects and update the speed if necessary
      */
     @Override
     public void tick() {
@@ -47,25 +46,8 @@ public class InvertedAnalogTransmissionBlockEntity extends CoggedEncasedShaftBlo
 
         if (!this.getLevel().isClientSide) {
             if (bestNeighborSignal != this.signal) {
-                //detach our own network, and our ExtraKinetic's
-                this.detachKinetics();
-                this.extraWheel.detachKinetics();
-
-                //Remove the sources
-                this.removeSource();
-                this.extraWheel.removeSource();
-
                 this.signal = bestNeighborSignal;
-                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(InvertedAnalogTransmissionBlock.POWERED, this.signal > 0));
-
-                //Depending on if we are connected to the ExtraKinetic BlockEntity, or vice versa, we need to attach kinetics accordingly
-                if (((KineticBlockEntityExtension) this).simulated$getConnectedToExtraKinetics()) {//Attach ours, then ExtraKientic's
-                    this.attachKinetics();
-                    this.extraWheel.attachKinetics();
-                } else { //Attach ExtraKinetic's, then ours
-                    this.extraWheel.attachKinetics();
-                    this.attachKinetics();
-                }
+                reAttachKinetics(this.getBlockState().setValue(InvertedAnalogTransmissionBlock.POWERED, this.signal > 0));
             }
         } else if (this.oversaturated) {
             if (!this.alreadySentEffects) {
@@ -76,7 +58,6 @@ public class InvertedAnalogTransmissionBlockEntity extends CoggedEncasedShaftBlo
             this.alreadySentEffects = false;
         }
 
-        this.extraWheel.tick();
         super.tick();
     }
 
@@ -118,6 +99,7 @@ public class InvertedAnalogTransmissionBlockEntity extends CoggedEncasedShaftBlo
     protected void write(final CompoundTag compound, final HolderLookup.Provider registries, final boolean clientPacket) {
         super.write(compound, registries, clientPacket);
 
+        compound.putInt("Signal", this.signal);
         compound.putBoolean("Oversaturated", this.oversaturated);
     }
 
@@ -125,6 +107,7 @@ public class InvertedAnalogTransmissionBlockEntity extends CoggedEncasedShaftBlo
     protected void read(final CompoundTag compound, final HolderLookup.Provider registries, final boolean clientPacket) {
         super.read(compound, registries, clientPacket);
 
+        this.signal = compound.getInt("Signal");
         this.oversaturated = compound.getBoolean("Oversaturated");
     }
 

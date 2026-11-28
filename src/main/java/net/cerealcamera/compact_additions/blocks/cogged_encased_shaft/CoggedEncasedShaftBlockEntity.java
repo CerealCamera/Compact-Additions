@@ -11,8 +11,6 @@ import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
 import net.cerealcamera.compact_additions.blocks.cogged_split_shaft.CoggedSplitShaftBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -28,8 +26,6 @@ public abstract class CoggedEncasedShaftBlockEntity extends KineticBlockEntity i
      * The ExtraKinetic BlockEntity associated with the CoggedEncasedShaft
      */
     protected final CoggedEncasedShaftCogwheel extraWheel;
-
-    private int signal = 0;
 
     public static PartialModel wheelPartialModel() {
         return AllPartialModels.SHAFTLESS_COGWHEEL;
@@ -47,48 +43,26 @@ public abstract class CoggedEncasedShaftBlockEntity extends KineticBlockEntity i
      */
     @Override
     public void tick() {
-        final int bestNeighborSignal = this.getLevel().getBestNeighborSignal(this.getBlockPos());
-
-        if (!this.getLevel().isClientSide) {
-            if (bestNeighborSignal != this.signal) {
-                // Detach our own network, and our ExtraKinetic's
-                this.detachKinetics();
-                this.extraWheel.detachKinetics();
-
-                // Remove the sources
-                this.removeSource();
-                this.extraWheel.removeSource();
-
-                this.signal = bestNeighborSignal;
-                this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(CoggedEncasedShaftBlock.POWERED, this.signal > 0));
-
-                // Depending on if we are connected to the ExtraKinetic BlockEntity, or vice versa, we need to attach kinetics accordingly
-                if (((KineticBlockEntityExtension) this).simulated$getConnectedToExtraKinetics()) {//Attach ours, then ExtraKientic's
-                    this.attachKinetics();
-                    this.extraWheel.attachKinetics();
-                } else { // Attach ExtraKinetic's, then ours
-                    this.extraWheel.attachKinetics();
-                    this.attachKinetics();
-                }
-            }
-        }
-
         this.extraWheel.tick();
         super.tick();
     }
 
-    @Override
-    protected void write(final CompoundTag compound, final HolderLookup.Provider registries, final boolean clientPacket) {
-        super.write(compound, registries, clientPacket);
+    public void reAttachKinetics(BlockState state) {
+        this.detachKinetics();
+        this.extraWheel.detachKinetics();
 
-        compound.putInt("Signal", this.signal);
-    }
+        this.removeSource();
+        this.extraWheel.removeSource();
 
-    @Override
-    protected void read(final CompoundTag compound, final HolderLookup.Provider registries, final boolean clientPacket) {
-        super.read(compound, registries, clientPacket);
+        this.getLevel().setBlockAndUpdate(this.getBlockPos(), state);
 
-        this.signal = compound.getInt("Signal");
+        if (((KineticBlockEntityExtension) this).simulated$getConnectedToExtraKinetics()) {
+            this.attachKinetics();
+            this.extraWheel.attachKinetics();
+        } else {
+            this.extraWheel.attachKinetics();
+            this.attachKinetics();
+        }
     }
 
     /**

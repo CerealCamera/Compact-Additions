@@ -1,9 +1,9 @@
 package net.cerealcamera.compact_additions;
 
+import com.simibubi.create.AllCreativeModeTabs;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -17,16 +17,16 @@ public class CACreativeTabs {
     public static final DeferredRegister<CreativeModeTab> REGISTER = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CompactAdditions.MODID);
 
     public static final List<ItemProviderEntry<?, ?>> ITEMS = List.of(
+            CABlocks.ANALOG_SPEED_CONTROLLER,
             CABlocks.INVERTED_ANALOG_TRANSMISSION,
             CABlocks.COGGED_GEARSHIFT,
-            CABlocks.INVERTED_COGGED_GEARSHIFT,
-            CABlocks.ANALOG_SPEED_CONTROLLER
+            CABlocks.INVERTED_COGGED_GEARSHIFT
     );
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN = REGISTER.register("main",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.compact_additions.main"))
-                    .withTabsBefore(ResourceLocation.parse("simulated:main_tab"))
+                    .withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getId())
                     .icon(CABlocks.INVERTED_ANALOG_TRANSMISSION::asStack)
                     .displayItems(new DisplayItemsGenerator(ITEMS))
                     .build());

@@ -3,7 +3,6 @@ package net.cerealcamera.compact_additions.blocks.cogged_gearshift;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import dev.simulated_team.simulated.util.extra_kinetics.ExtraKinetics;
 import net.cerealcamera.compact_additions.blocks.cogged_encased_shaft.CoggedEncasedShaftBlockEntity;
-import net.cerealcamera.compact_additions.blocks.inverted_analog_transmission.InvertedAnalogTransmissionBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +25,7 @@ public class CoggedGearshiftBlockEntity extends CoggedEncasedShaftBlockEntity im
         if (!this.getLevel().isClientSide) {
             if (hasNeighborSignal != this.powered) {
                 this.powered = hasNeighborSignal;
-                reAttachKinetics(this.getBlockState().setValue(InvertedAnalogTransmissionBlock.POWERED, this.powered));
+                reAttachKinetics(this.getBlockState().setValue(CoggedGearshiftBlock.POWERED, this.powered));
             }
         }
 
